@@ -1,0 +1,26 @@
+import random
+import string
+
+def generate_captcha(length=5):
+    characters = string.ascii_letters + string.digits
+    captcha = ''.join(random.choices(characters, k=length))
+    return captcha
+
+def main():
+    print("Welcome to the CAPTCHA Generator!")
+    while True:
+        captcha = generate_captcha()
+        print(f"Generated CAPTCHA: {captcha}")
+
+        user_input = input("Enter the CAPTCHA or type 'quit' to exit: ")
+        if user_input.lower() == 'quit':
+            print("Exiting CAPTCHA generator. Goodbye!")
+            break
+
+        if user_input == captcha:
+            print("CAPTCHA matched! Access granted.")
+        else:
+            print("CAPTCHA did not match. Please try again.")
+
+if __name__ == "__main__":
+    main()
